@@ -1,0 +1,23 @@
+extends header
+block content
+    if response.status
+        .jumbotron.jumbotron-fluid
+            table.table.table-dark
+                thead
+                    tr
+                    th Name
+                    th Price
+                    th Photo
+                tbody
+                    each p in response.products
+                        tr
+                        th=p.title
+                        th=p.price
+                        th
+                            img(src=p.thumbnail)
+
+    else
+        h1 There is no product
+        
+    a.btn.btn-primary(href='/products' type='button') Go back to
+

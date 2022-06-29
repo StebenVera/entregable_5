@@ -1,0 +1,30 @@
+<%- include('./partials/header.ejs') %>
+    <% if(response.status) {%>
+        <div class="jumbotron jumbotron-fluid">
+        <h1>Vista de Productos</h1>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i< response.products.length;i++){%>
+                    <tr>
+                        <th><%= response.products[i].title%></th>
+                        <th><%= response.products[i].price %></th>
+                        <th>
+                            <img src="<%= response.products[i].thumbnail %>"/>
+                        </th>
+                    </tr>
+                <%}%>
+            </tbody>
+        </table>
+        </div>
+    <%}else{%>
+        <h1>There is no product</h1>
+    <%}%>
+    <a href="/products" type="button" class="btn btn-primary"> Go back to</a>
+<%- include('./partials/footer.ejs') %>
